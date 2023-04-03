@@ -12,7 +12,10 @@ async def send_message(message,user_message,user,is_private):
     try:
         #Trae como respuesta lo codeado en response
         response = responses.get_response(user_message)
-        await message.author.send(f"{'@'}{user}\n{response}") if is_private else await message.channel.send(f"{'@'}{user}\n{response}")
+        
+        #Solucion de problema ya que al llamar a response y no usar un comando, daba problemas.
+        if response != None:
+            await message.author.send(f"{'@'}{user[:-5]}{response}") if is_private else await message.channel.send(f"{'@'}{user[:-5]}{response}")
     except Exception as e:
         print(e)
 

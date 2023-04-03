@@ -25,6 +25,6 @@ def get_response(message:str) -> str:
             #Asigno lo ingresado por mensaje de discord como prompt
             prompt = str(p_message[5:]) 
             
-            response = openai.Completion.create(engine="text-davinci-003",prompt=prompt,max_tokens=2048)
+            response = openai.Completion.create(engine="text-davinci-003",prompt=prompt,max_tokens=4000)
             return (response.choices[0].text)
     
